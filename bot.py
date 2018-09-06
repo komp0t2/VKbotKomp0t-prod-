@@ -2,7 +2,7 @@ import vk_requests
 import time
 import requests, json
 
-api = vk_requests.create_api(app_id='6683177', login='89127578732', password='TTvip784569', scope=['offline', 'status', 'messages', 'docs', 'photos'], api_version='5.63')
+api = vk_requests.create_api(app_id='*', login='*', password='*', scope=['offline', 'status', 'messages', 'docs', 'photos'], api_version='5.63')
 if api:
 	print('Сессия создана')
 f = api.users.get()
@@ -45,7 +45,7 @@ while True:
 		item = r['messages']['items']
 		user_id = item[0]['user_id']
 		body = item[0]['body']
-		if (user_id != 388078504):
+		if (user_id != *):
 			if 'chat_id' in r['messages']['items'][0]: #Сообщение из чата
 				print('message from chat')
 			else: #Сообщение из лички
@@ -53,14 +53,6 @@ while True:
 					write_msg(user_id, 'Отлично)), У тебя как?')
 				elif 'привет'.lower() in body.lower():
 					write_msg(user_id, 'Привет))')
-				elif 'Что делаешь'.lower() in body.lower():
-					write_msg(user_id, 'Пишу этого бота) Ты что делаешь?')
-				elif 'Зайдешь'.lower() in body.lower():
-					write_msg(user_id, 'Извини, я сейчас занят, пишу программный код')
-				elif 'любишь меня'.lower() in body.lower():
-					write_msg(user_id, 'Люблю тебя безумно^^')
-				elif 'Зайдёшь'.lower() in body.lower():
-					write_msg(user_id, 'Извини, я сейчас занят, пишу программный код')
 				else: print
 	pts = api.messages.getLongPollHistory(ts = ts, pts = pts, ip_version = 5.84)['new_pts']
 	time.sleep(1)
